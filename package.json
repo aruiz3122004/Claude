@@ -1,0 +1,15 @@
+{
+  "name": "puerta-samaria",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Puerta Samaria — Agencia de Turismo en Santa Marta (Frontend + Backend + SQLite)",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "ver-reservas": "node scripts/ver-reservas.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

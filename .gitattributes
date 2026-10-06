@@ -1,0 +1,23 @@
+# Normalizacion de finales de linea (evita scripts rotos en Windows)
+* text=auto eol=lf
+
+# Archivos binarios: no tocar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.pdf binary
+*.xlsx binary
+*.zip binary
+
+# Scripts shell: siempre LF
+*.sh text eol=lf
+
+# Scripts Windows: siempre CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf

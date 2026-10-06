@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>inspect</title></head>
+<body>
+<script>
+fetch('http://127.0.0.1:5173/').then(r => r.text()).then(html => {
+  document.open(); document.write(html); document.close();
+  setTimeout(() => {
+    const c = document.querySelector('.counter');
+    const g = document.querySelector('.hero-media-giga');
+    const m = document.querySelector('.hero-media');
+    const result = {
+      counter: c ? c.getBoundingClientRect() : null,
+      counterText: c ? c.textContent : null,
+      counterComputed: c ? {
+        display: getComputedStyle(c).display,
+        opacity: getComputedStyle(c).opacity,
+        color: getComputedStyle(c).color,
+        fontSize: getComputedStyle(c).fontSize,
+        visibility: getComputedStyle(c).visibility,
+      } : null,
+      giga: g ? g.getBoundingClientRect() : null,
+      gigaComputed: g ? {
+        opacity: getComputedStyle(g).opacity,
+        transform: getComputedStyle(g).transform,
+      } : null,
+      media: m ? m.getBoundingClientRect() : null,
+    };
+    document.title = 'DONE';
+    document.body.insertAdjacentHTML('afterbegin', '<pre id="dbg" style="position:fixed;top:0;left:0;z-index:9999;background:#fff;color:#000;padding:8px;font-size:11px;max-width:380px;">' + JSON.stringify(result, null, 2) + '</pre>');
+  }, 2500);
+});
+</script>
+</body>
+</html>

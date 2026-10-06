@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Rutas sin valor para indexacion
+Disallow: /api/
+
+Sitemap: https://[PENDIENTE_USUARIO: dominio]/sitemap.xml

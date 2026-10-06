@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f backend/api/healthz.ts backend/api/quotes.ts backend/api/readyz.ts backend/src/app.ts backend/src/server.ts backend/src/config/env.ts backend/src/lib/cors.ts backend/src/lib/hash.ts backend/src/lib/logger.ts backend/src/lib/rateLimit.ts backend/src/lib/securityHeaders.ts backend/src/lib/templates/ownerEmail.ts backend/src/mail/MailProvider.ts backend/src/mail/ResendMailProvider.ts backend/src/mail/SmtpMailProvider.ts backend/src/mail/index.ts backend/src/schemas/quote.ts backend/test/quote.schema.test.ts backend/test/quotes.handler.test.ts backend/package.json backend/tsconfig.json)",
+      "Bash(rmdir backend/api backend/src/config backend/src/lib/templates backend/src/lib backend/src/mail backend/src/schemas backend/src backend/test)",
+      "Bash(rm -f database/src/repositories/QuoteRepository.ts database/src/repositories/GoogleSheetsRepository.ts database/src/repositories/ExcelFileRepository.ts database/src/repositories/SqliteRepository.ts database/src/repositories/index.ts database/scripts/seed-headers.ts database/scripts/anonymize.ts database/package.json database/tsconfig.json)",
+      "Bash(rmdir database/src/repositories database/src database/scripts)",
+      "Bash(rm -f frontend/scripts/crop-logo.ps1 frontend/scripts/generate-favicons.ps1 frontend/scripts/generate-favicons-from-logo.ps1 frontend/scripts/generate-og-cover.ps1)",
+      "Bash(rm -rf frontend/public/favicons)",
+      "Bash(rm -f frontend/public/og-cover.jpg frontend/public/og-cover.svg)",
+      "Bash(rm -f .env.example .env.local)",
+      "Bash(node --check server.js)",
+      "Bash(node --check scripts/ver-reservas.js)",
+      "Bash(node --check scripts/init-db.js)",
+      "Bash(node --check frontend/scripts/main.js)",
+      "Bash(node --check frontend/scripts/config.js)",
+      "Bash(node -e ' *)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "Bash(curl -s -o nul -w \"/                            : %{http_code}  \\(%{size_download} bytes\\)\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o nul -w \"/politica-privacidad.html    : %{http_code}  \\(%{size_download} bytes\\)\\\\n\" http://localhost:3001/politica-privacidad.html)",
+      "Bash(curl -s -o nul -w \"/politica-privacidad          : %{http_code}  \\(%{size_download} bytes\\)\\\\n\" http://localhost:3001/politica-privacidad)",
+      "Bash(curl -s -o nul -w \"/styles/main.css              : %{http_code}  \\(%{size_download} bytes\\)\\\\n\" http://localhost:3001/styles/main.css)",
+      "Bash(curl -s -o nul -w \"/styles/tokens.css            : %{http_code}  \\(%{size_download} bytes\\)\\\\n\" http://localhost:3001/styles/tokens.css)",
+      "Bash(curl -s -I http://localhost:3001/politica-privacidad.html)",
+      "Bash(curl -s http://localhost:3001/politica-privacidad.html)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o nul -w \"/                            : %{http_code}  \\(%{size_download} B\\)\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o nul -w \"/politica-privacidad.html    : %{http_code}  \\(%{size_download} B\\)\\\\n\" http://localhost:3000/politica-privacidad.html)",
+      "Bash(curl -s -o nul -w \"/styles/main.css              : %{http_code}  \\(%{size_download} B\\)\\\\n\" http://localhost:3000/styles/main.css)",
+      "Bash(curl -s -o nul -w \"/scripts/main.js              : %{http_code}  \\(%{size_download} B\\)\\\\n\" http://localhost:3000/scripts/main.js)",
+      "Bash(curl -s -o nul -w \"/assets/background.mp4        : %{http_code}  \\(%{size_download} B\\)\\\\n\" http://localhost:3000/assets/background.mp4)",
+      "Bash(curl -s -o nul -w \"GET  /                            : %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o nul -w \"GET  /politica-privacidad.html    : %{http_code}\\\\n\" http://localhost:3000/politica-privacidad.html)",
+      "Bash(curl -s -o nul -w \"GET  /api/reservas \\(ya no público\\): %{http_code}\\\\n\" http://localhost:3000/api/reservas)",
+      "Bash(curl -s -o nul -w \"GET  /api/quotes                  : %{http_code}\\\\n\" http://localhost:3000/api/quotes)",
+      "Bash(curl -s -o nul -w \"POST /api/quotes \\(bot honeypot\\) : %{http_code}\\\\n\" -X POST -H \"Content-Type: application/json\" -d '{\"nombre\":\"\",\"telefono\":\"\",\"email\":\"\"}' http://localhost:3000/api/quotes)",
+      "PowerShell(Get-Process *)",
+      "Bash(curl -s -o nul -w \"GET /: %{http_code}\\\\n\" http://localhost:3000/)"
+    ]
+  }
+}

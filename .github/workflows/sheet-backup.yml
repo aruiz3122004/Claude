@@ -1,0 +1,140 @@
+name: Sheet backup (daily)
+
+# ---------------------------------------------------------------------------
+# Politica de retencion (AU-H-01: RPO 24 h):
+#
+#   - Diarios:   cada dia a las 03:00 UTC (22:00 Colombia dia anterior).
+#                Nombre: backups/quotes-YYYY-MM-DD.csv
+#                Retencion: 30 dias (purga automatica mas abajo).
+#
+#   - Semanales: los domingos se duplica el export con sufijo "-weekly".
+#                Nombre: backups/weekly/quotes-YYYY-MM-DD-weekly.csv
+#                Retencion: 52 semanas (purga automatica mas abajo).
+#
+#   Resultado: ventana de recuperacion granular de 30 dias y horizonte
+#   historico de 1 ano con un snapshot por semana. Cumple RPO 24 h.
+# ---------------------------------------------------------------------------
+
+on:
+  schedule:
+    # Diario 03:00 UTC = 22:00 Colombia (dia anterior)
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    name: Export Google Sheet to CSV
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      SHEET_TAB: ${{ secrets.SHEET_TAB }}
+      GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate secrets presence
+        run: |
+          if [ -z "$SHEET_ID" ] || [ -z "$GOOGLE_SA_JSON" ]; then
+            echo "::error::Faltan secrets SHEET_ID y/o GOOGLE_SA_JSON en el repo."
+            exit 1
+          fi
+          echo "SHEET_TAB=${SHEET_TAB:-quotes}" >> $GITHUB_ENV
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install google-auth-library
+        run: npm install --no-save google-auth-library@^9
+
+      - name: Fetch OAuth token from Service Account
+        id: token
+        run: |
+          node <<'EOF' > /tmp/token.txt
+          const { JWT } = require('google-auth-library');
+          const sa = JSON.parse(process.env.GOOGLE_SA_JSON);
+          const client = new JWT({
+            email: sa.client_email,
+            key: sa.private_key,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+          });
+          client.authorize().then(tok => {
+            process.stdout.write(tok.access_token);
+          }).catch(err => {
+            console.error(err);
+            process.exit(1);
+          });
+          EOF
+          TOKEN=$(cat /tmp/token.txt)
+          echo "::add-mask::$TOKEN"
+          echo "access_token=$TOKEN" >> $GITHUB_OUTPUT
+
+      - name: Export sheet to CSV (daily)
+        id: export
+        env:
+          ACCESS_TOKEN: ${{ steps.token.outputs.access_token }}
+        run: |
+          mkdir -p backups backups/weekly
+          DATE=$(date -u +'%Y-%m-%d')
+          DOW=$(date -u +'%u')  # 1=Lun ... 7=Dom
+          OUT="backups/quotes-${DATE}.csv"
+          URL="https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_TAB}"
+          HTTP_CODE=$(curl -sS -o "$OUT" -w "%{http_code}" \
+            -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+            "$URL")
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::Export fallo con codigo HTTP $HTTP_CODE"
+            cat "$OUT"
+            exit 1
+          fi
+          SIZE=$(wc -c < "$OUT")
+          echo "Export OK: $OUT ($SIZE bytes)"
+          if [ "$SIZE" -lt 10 ]; then
+            echo "::warning::CSV casi vacio ($SIZE bytes). Verificar permisos del Service Account."
+          fi
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "dow=$DOW" >> $GITHUB_OUTPUT
+
+      - name: Weekly snapshot (Sunday only)
+        if: steps.export.outputs.dow == '7'
+        run: |
+          DATE="${{ steps.export.outputs.date }}"
+          SRC="backups/quotes-${DATE}.csv"
+          DST="backups/weekly/quotes-${DATE}-weekly.csv"
+          cp "$SRC" "$DST"
+          echo "Weekly snapshot creado: $DST"
+
+      - name: Prune daily backups older than 30 days
+        run: |
+          # Diarios: retener 30 dias
+          find backups -maxdepth 1 -name "quotes-*.csv" -type f -mtime +30 -delete || true
+
+      - name: Prune weekly backups older than 52 weeks
+        run: |
+          # Semanales: retener 52 semanas (364 dias)
+          find backups/weekly -name "quotes-*-weekly.csv" -type f -mtime +364 -delete || true
+
+      - name: Commit backup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backups/
+          if git diff --staged --quiet; then
+            echo "Sin cambios en backups/"
+          else
+            git commit -m "chore(backup): sheet export $(date -u +'%Y-%m-%d')"
+            git push
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Backup fallo. Revisar GOOGLE_SA_JSON, SHEET_ID y permisos del Service Account sobre el Sheet."

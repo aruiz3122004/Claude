@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="es-CO" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puerta Samaria — Playas, Alojamiento y Experiencias en Santa Marta</title>
+  <meta name="description"
+    content="Agencia de turismo y acompañamiento en Santa Marta. Descubra las mejores playas del Parque Tayrona, Bahía Concha, Taganga y El Rodadero con hoteles, transporte náutico y gastronomía personalizada." />
+  <meta name="keywords"
+    content="playas Santa Marta, Parque Tayrona, Bahía Concha, Cabo San Juan, El Rodadero, hoteles Santa Marta, turismo Santa Marta, lanchas Taganga, tours Santa Marta, alojamiento Santa Marta" />
+  <meta name="author" content="Puerta Samaria" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0C0F13" id="metaThemeColor" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://puertasamaria.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="Puerta Samaria" />
+  <meta property="og:title" content="Puerta Samaria — Playas, Alojamiento y Experiencias en Santa Marta" />
+  <meta property="og:description"
+    content="Acompañamiento turístico integral en Santa Marta: playas del Parque Tayrona, cabañas, hoteles, transporte y experiencias caribeñas." />
+  <meta property="og:url" content="https://puertasamaria.com/" />
+  <meta property="og:image" content="/assets/background-poster.jpg" />
+  <meta property="og:image:width" content="960" />
+  <meta property="og:image:height" content="540" />
+  <meta property="og:image:alt" content="Playa de aguas cristalinas y palmeras en Santa Marta, Caribe colombiano." />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Puerta Samaria — Turismo y Playas en Santa Marta" />
+  <meta name="twitter:description"
+    content="Descubra el Parque Tayrona, hoteles boutique, lanchas y gastronomía en Santa Marta con acompañamiento local." />
+  <meta name="twitter:image" content="/assets/background-poster.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/logo_sin_fondo.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/logo_sin_fondo.png" />
+  <link rel="apple-touch-icon" href="assets/logo_sin_fondo.png" />
+  <link rel="manifest" href="public/site.webmanifest" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles/tokens.css?v=2" />
+  <link rel="stylesheet" href="styles/main.css?v=3" />
+
+  <!-- Script de tema: debe correr temprano para evitar flash.
+       `defer` ejecuta tras el parseo del HTML pero antes de DOMContentLoaded.
+       Un pequeño FOUC es aceptable para respetar CSP estricta sin inline scripts. -->
+  <script defer src="scripts/theme.js"></script>
+  <!-- Config inyectada en build (reemplazar MAPS_API_KEY_PLACEHOLDER en despliegue) -->
+  <script defer src="scripts/config.js"></script>
+  <script defer src="scripts/main.js"></script>
+  <script defer src="scripts/guide.js"></script>
+
+  <!-- JSON-LD LocalBusiness / TravelAgency -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "@id": "https://puertasamaria.com/#agency",
+    "name": "Puerta Samaria",
+    "image": "https://puertasamaria.com/assets/background-poster.jpg",
+    "url": "https://puertasamaria.com/",
+    "telephone": "+57-300-748-7142",
+    "email": "reservas@puertasamaria.com",
+    "priceRange": "$$",
+    "description": "Agencia de turismo y acompañamiento en Santa Marta. Excursiones a playas del Parque Tayrona, reserva de hoteles, cabañas, transporte náutico y experiencias gastronómicas.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrera 1C # 22-18, Centro Histórico",
+      "addressLocality": "Santa Marta",
+      "addressRegion": "Magdalena",
+      "postalCode": "470004",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 11.2408,
+      "longitude": -74.2110
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "07:00",
+        "closes": "21:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Santa Marta" },
+      { "@type": "AdministrativeArea", "name": "Parque Nacional Natural Tayrona" },
+      { "@type": "AdministrativeArea", "name": "Taganga" },
+      { "@type": "AdministrativeArea", "name": "Magdalena" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Puerta Samaria, inicio">
+        <img src="assets/logo_sin_fondo.png" alt="Puerta Samaria" class="brand-mark" width="44" height="36" />
+        <span class="brand-text">
+          Puerta Samaria
+          <small>turismo · santa marta</small>
+        </span>
+      </a>
+
+      <nav aria-label="Principal">
+        <ul class="nav-list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Playas</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Cambiar a modo claro">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+
+        <a href="#contacto" class="nav-cta">Planear viaje</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+          aria-label="Abrir menú">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" data-open="false">
+    <a href="#servicios">Servicios</a>
+    <a href="#proyectos">Playas</a>
+    <a href="#proceso">Cómo funciona</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#contacto" class="nav-cta">Planear viaje</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="hero">
+      <!-- Video de fondo (comprimido: assets/background.mp4). Decorativo, sin audio. -->
+      <div class="hero-bg" aria-hidden="true">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture
+          poster="assets/background-poster.jpg">
+          <source src="assets/background.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+      <div class="hero-embers" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+
+          <h1 class="hero-headline" aria-label="Playas que enamoran el Caribe.">
+            <span class="hero-line"><span class="word" aria-hidden="true">Playas</span></span>
+            <span class="hero-line"><span class="word" aria-hidden="true">que</span> <span class="word accent"
+                aria-hidden="true">enamoran</span></span>
+            <span class="hero-line"><span class="word" aria-hidden="true">el Caribe.</span></span>
+          </h1>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="container">
+        <div class="ticker-track">
+          <span>Parque Tayrona</span>
+          <span>Bahía Concha</span>
+          <span>Cabo San Juan</span>
+          <span>Playa Cristal</span>
+          <span>Hoteles &amp; Cabañas</span>
+          <span>Transporte Náutico</span>
+          <span>Gastronomía Costeña</span>
+          <span>Acompañamiento VIP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-eyebrow">01 · Servicios &amp; Acompañamiento</p>
+          <h2 class="section-title">Todo para su estadía perfecta</h2>
+          <p class="section-sub">Gestionamos cada detalle de su viaje a Santa Marta. Desde playas cristalinas y
+            senderismo en el Tayrona hasta hoteles boutique y gastronomía caribeña.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">01</span>
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop 800w,
+                        https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80&auto=format&fit=crop 1200w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Playa de arenas doradas y mar turquesa cristalino en Santa Marta." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="24" cy="24" r="10" />
+                <path
+                  d="M24 6v4M24 38v4M6 24h4M38 24h4M11.3 11.3l2.8 2.8M33.9 33.9l2.8 2.8M11.3 36.7l2.8-2.8M33.9 14.1l2.8-2.8" />
+              </svg>
+              <h3>Tours a Playas &amp; Tayrona</h3>
+              <p>Excursiones organizadas a Cabo San Juan, Bahía Concha, Playa Cristal y Playa Grande. Entradas al
+                parque, senderismo y lanchas seguras.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">02</span>
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Hotel boutique y resort caribeño rodeado de palmeras." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M8 40V14l16-8 16 8v26H8z" />
+                <path d="M20 40V28h8v12" />
+                <rect x="14" y="18" width="6" height="6" />
+                <rect x="28" y="18" width="6" height="6" />
+              </svg>
+              <h3>Hospedaje &amp; Cabañas</h3>
+              <p>Hoteles boutique en el Centro Histórico, resorts frente a la playa en Pozos Colorados y eco-cabañas de
+                descanso dentro de la naturaleza.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">03</span>
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Embarcación navegando en aguas turquesas del mar Caribe." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M6 34c6-4 12 4 18 0s12 4 18 0" />
+                <path d="M10 28l4-14 10 4 14-4 4 14H10z" />
+                <path d="M24 10v18" />
+              </svg>
+              <h3>Transporte &amp; Lanchas</h3>
+              <p>Traslados privados desde el aeropuerto Simón Bolívar, camionetas climatizadas y lanchas certificadas
+                con tripulación profesional.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">04</span>
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Restaurante y terraza frente al mar al atardecer." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M12 6v14a6 6 0 0012 0V6" />
+                <path d="M18 26v16M12 42h12M32 6v36M32 6c4 0 8 3 8 8s-4 8-8 8" />
+              </svg>
+              <h3>Gastronomía Costeña</h3>
+              <p>Recomendaciones y reservas en los restaurantes más auténticos: pescados frescos, cazuelas de mariscos y
+                cócteles tropicales con vista al mar.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">05</span>
+              <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Costa de Santa Marta con acantilados, vegetación y mar azul." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="24" cy="24" r="18" />
+                <polygon points="24,12 28,20 36,24 28,28 24,36 20,28 12,24 20,20" />
+              </svg>
+              <h3>Acompañamiento &amp; Guía 24/7</h3>
+              <p>Anfitriones locales que le acompañan durante su estancia. Asesoría honesta para no caer en precios
+                inflados ni intermediarios informales.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-photo">
+              <span class="service-num">06</span>
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="500" loading="lazy"
+                decoding="async" alt="Vista panorámica de resort con piscina y palmeras hacia el océano." />
+            </div>
+            <div class="service-body">
+              <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <rect x="8" y="14" width="32" height="24" rx="3" />
+                <path d="M18 14V10a2 2 0 012-2h8a2 2 0 012 2v4" />
+                <path d="M8 24h32M20 24v6M28 24v6" />
+              </svg>
+              <h3>Planes a la Medida</h3>
+              <p>Paquetes todo incluido diseñados para parejas, familias o grupos de amigos. Fechas flexibles,
+                actividades exclusivas y presupuesto claro.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS ============ -->
+    <section id="proyectos" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-eyebrow">02 · Playas &amp; Destinos</p>
+          <h2 class="section-title">Playas imperdibles</h2>
+          <p class="section-sub">Una selección de los rincones más espectaculares de la bahía más hermosa de América y
+            las costas del Parque Tayrona.</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filtrar por categoría">
+          <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button class="filter-chip" type="button" data-filter="tayrona" aria-pressed="false">Parque Tayrona</button>
+          <button class="filter-chip" type="button" data-filter="bahias" aria-pressed="false">Bahías &amp;
+            Ensenadas</button>
+          <button class="filter-chip" type="button" data-filter="urbanas" aria-pressed="false">Playas de la
+            Ciudad</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <article class="project-card" data-category="tayrona">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Cabo San Juan en el Parque Tayrona, playa tropical con mirador en las rocas." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Parque Tayrona</span>
+                <span>Top #1</span>
+              </div>
+              <h3>Cabo San Juan del Guía</h3>
+              <p>La postal más emblemática del país. Palmeras que rozan el mar, mirador sobre las rocas gigantes y
+                piscina natural.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="bahias">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Bahía Concha con aguas cristalinas y arena blanca en Santa Marta." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Bahías &amp; Ensenadas</span>
+                <span>Familiar</span>
+              </div>
+              <h3>Bahía Concha</h3>
+              <p>Aguas tranquilas y transparentes abrazadas por cerros verdes. Acceso fácil por vía terrestre o lancha
+                privada.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="urbanas">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Lancha acercándose a Playa Blanca con aguas transparentes." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Playas de la Ciudad</span>
+                <span>Náutica</span>
+              </div>
+              <h3>El Rodadero &amp; Playa Blanca</h3>
+              <p>Paseo en lancha de 10 minutos desde El Rodadero hacia arena blanca, acuario marino y pescado frito a la
+                orilla del mar.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="tayrona">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Playa Cristal con arena suave y aguas turquesas rodeadas de vegetación." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Parque Tayrona</span>
+                <span>Snorkel</span>
+              </div>
+              <h3>Playa Cristal &amp; Neguanje</h3>
+              <p>Santuario de arrecifes de coral con cupo diario regulado. Visibilidad submarina impresionante y
+                ambiente de descanso total.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="bahias">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Ensenada de Taganga con montañas que caen al mar al atardecer." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Bahías &amp; Ensenadas</span>
+                <span>Atardeceres</span>
+              </div>
+              <h3>Taganga &amp; Playa Grande</h3>
+              <p>Pueblo tradicional de pescadores, escuelas de buceo y sendero costero hacia aguas cristalinas con
+                miradores espectaculares.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="urbanas">
+            <div class="project-visual">
+              <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=400&q=80&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80&auto=format&fit=crop 800w"
+                sizes="(min-width: 1000px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="600" loading="lazy"
+                decoding="async" alt="Atardecer dorado sobre las extensas playas de Bello Horizonte." />
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-cat">Playas de la Ciudad</span>
+                <span>Relax</span>
+              </div>
+              <h3>Bello Horizonte &amp; Pozos Colorados</h3>
+              <p>Playas anchas y tranquilas frente a los mejores condominios y cadenas hoteleras. Puestas de sol
+                inolvidables sin aglomeraciones.</p>
+            </div>
+          </article>
+
+          <p class="projects-empty" id="projectsEmpty" hidden>
+            Sin playas disponibles en este filtro. Consúltenos por rutas privadas personalizadas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO TRABAJAMOS ============ -->
+    <section id="proceso" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-eyebrow">03 · Cómo trabajamos</p>
+          <h2 class="section-title">Intermediación y acompañamiento paso a paso</h2>
+          <p class="section-sub">Actuamos como su agencia anfitriona y puente directo en Santa Marta. Gestionamos cada
+            servicio con prestadores formales para que disfrute de las mejores playas sin riesgos, sorpresas ni
+            sobrecostos.</p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-step reveal">
+            <div class="process-step-photo">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=300&q=80&auto=format&fit=crop 300w,
+                        https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80&auto=format&fit=crop 600w"
+                sizes="(min-width: 1000px) 25vw, (min-width: 700px) 50vw, 100vw" width="600" height="375" loading="lazy"
+                decoding="async" alt="Planeación de viaje con itinerario y mapas turísticos." />
+              <span class="n">01</span>
+            </div>
+            <div class="process-step-body">
+              <h3>1. Cuéntenos sus planes</h3>
+              <p>Fechas de estadía, número de personas, playas o actividades deseadas (Tayrona, bahías, descanso o
+                aventura) y presupuesto estimado.</p>
+            </div>
+          </article>
+
+          <article class="process-step reveal">
+            <div class="process-step-photo">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300&q=80&auto=format&fit=crop 300w,
+                        https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop 600w"
+                sizes="(min-width: 1000px) 25vw, (min-width: 700px) 50vw, 100vw" width="600" height="375" loading="lazy"
+                decoding="async" alt="Ruta de viaje hacia destino paradisíaco costero." />
+              <span class="n">02</span>
+            </div>
+            <div class="process-step-body">
+              <h3>2. Asesoría e intermediación a la medida</h3>
+              <p>Filtramos y cotizamos con hoteles boutique, cabañas, lanchas reglamentadas y anfitriones gastronómicos
+                para armarle una propuesta clara sin tarifas infladas.</p>
+            </div>
+          </article>
+
+          <article class="process-step reveal">
+            <div class="process-step-photo">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&q=80&auto=format&fit=crop 300w,
+                        https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&auto=format&fit=crop 600w"
+                sizes="(min-width: 1000px) 25vw, (min-width: 700px) 50vw, 100vw" width="600" height="375" loading="lazy"
+                decoding="async" alt="Embarcación turística asegurada en navegación hacia ensenada." />
+              <span class="n">03</span>
+            </div>
+            <div class="process-step-body">
+              <h3>3. Coordinación y reservas seguras</h3>
+              <p>Aseguramos sus cupos con operadores oficiales, permisos del Parque Tayrona y traslados privados antes
+                de su llegada a la ciudad.</p>
+            </div>
+          </article>
+
+          <article class="process-step reveal">
+            <div class="process-step-photo">
+              <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&q=80&auto=format&fit=crop"
+                srcset="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=300&q=80&auto=format&fit=crop 300w,
+                        https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&q=80&auto=format&fit=crop 600w"
+                sizes="(min-width: 1000px) 25vw, (min-width: 700px) 50vw, 100vw" width="600" height="375" loading="lazy"
+                decoding="async" alt="Turistas disfrutando de la playa con acompañamiento profesional." />
+              <span class="n">04</span>
+            </div>
+            <div class="process-step-body">
+              <h3>4. Acompañamiento local 24/7</h3>
+              <p>Le recibimos personalmente en Santa Marta y nuestro equipo de anfitriones permanece disponible en todo
+                momento para asistirle y solucionar cualquier imprevisto.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section id="nosotros" class="section">
+      <div class="container about">
+        <div class="reveal">
+          <p class="section-eyebrow">04 · Nosotros</p>
+          <h2 class="section-title">Su agencia anfitriona en Santa Marta</h2>
+          <p>
+            En <strong>Puerta Samaria</strong> somos una agencia local constituida como <strong>PUERTA SAMARIA
+              S.A.S.</strong>, especializada en intermediación turística y acompañamiento integral para quienes desean
+            descubrir lo mejor de Santa Marta y el Caribe colombiano.
+          </p>
+          <p>
+            Sabemos que llegar a un nuevo destino puede ser abrumador frente a la informalidad en las playas, las
+            ofertas poco transparentes y los cobros excesivos. Por eso nacimos como su filtro de confianza:
+            seleccionamos con rigor los hoteles y cabañas más cómodos, coordinamos lanchas reglamentadas y le guiamos
+            hacia los restaurantes y sitios más auténticos de la ciudad y el Parque Tayrona.
+          </p>
+          <p>
+            Desde nuestra sede física en la <strong>Carrera 1C # 22-18, Centro Histórico de Santa Marta</strong>,
+            nuestro equipo le acompaña antes, durante y después de su visita para que su única ocupación sea descansar y
+            maravillarse con las aguas cristalinas y la calidez samaria.
+          </p>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="about-stat">
+            <div class="n">10+</div>
+            <span class="l">Años guiando en la costa</span>
+          </div>
+          <div class="about-stat">
+            <div class="n">25+</div>
+            <span class="l">Playas y destinos curados</span>
+          </div>
+          <div class="about-stat">
+            <div class="n">5.000+</div>
+            <span class="l">Viajeros acompañados</span>
+          </div>
+          <div class="about-stat">
+            <div class="n">100%</div>
+            <span class="l">Operadores verificados</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-eyebrow">05 · Contacto</p>
+          <h2 class="section-title">Planee su viaje a Santa Marta</h2>
+          <p class="section-sub">Cuéntenos sus fechas y destinos soñados. Respondemos el mismo día con una propuesta
+            personalizada sin compromiso.</p>
+        </div>
+
+        <div class="contact">
+          <div class="contact-info reveal">
+            <h3 style="font-size: var(--fs-md);">Atención &amp; Reservas</h3>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 22s-8-7.5-8-13a8 8 0 1116 0c0 5.5-8 13-8 13z" />
+                  <circle cx="12" cy="9" r="3" />
+                </svg>
+                <div>
+                  <strong>Ubicación</strong>
+                  <span>Carrera 1C # 22-18, Centro Histórico, Santa Marta, Magdalena</span>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path
+                    d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0122 16.9z" />
+                </svg>
+                <div>
+                  <strong>Teléfono</strong>
+                  <a href="tel:+573007487142">+57 300 748 7142</a>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path
+                    d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z" />
+                </svg>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <a href="https://wa.me/573007487142" target="_blank" rel="noopener noreferrer">+57 300 748 7142</a>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" />
+                  <path d="M22 6l-10 7L2 6" />
+                </svg>
+                <div>
+                  <strong>Correo</strong>
+                  <a href="mailto:reservas@puertasamaria.com">reservas@puertasamaria.com</a>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+                <div>
+                  <strong>Horario</strong>
+                  <span>Lun–Dom 7:00 – 21:00 · Soporte en viaje 24/7</span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Mapa diferido -->
+            <div class="map-wrap" id="mapWrap">
+              <div class="map-placeholder" id="mapPlaceholder">
+                <h4>Ubicación en Google Maps</h4>
+                <p>Para mostrar el mapa cargamos un recurso de Google que puede instalar cookies en su navegador y
+                  recibir su dirección IP.</p>
+                <button type="button" class="btn btn-primary" id="mapShowBtn" data-testid="maps-show">
+                  <span>Mostrar mapa</span>
+                </button>
+                <a class="map-fallback"
+                  href="https://www.google.com/maps/search/?api=1&query=Centro+Hist%C3%B3rico+Santa+Marta+Magdalena+Colombia"
+                  target="_blank" rel="noopener noreferrer">
+                  Abrir en Google Maps (nueva pestaña)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <form class="form reveal" id="contactForm" novalidate aria-labelledby="contactForm-title">
+            <h3 id="contactForm-title" style="font-size: var(--fs-md);">Solicitud de viaje y cotización</h3>
+
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="f-nombre">Nombre completo <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-nombre" name="nombre" type="text" required autocomplete="name" aria-describedby="e-nombre"
+                  maxlength="120" data-testid="field-nombre" />
+                <span class="error" id="e-nombre">Escriba su nombre completo (entre 2 y 120 caracteres).</span>
+              </div>
+              <div class="field">
+                <label for="f-telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+                <div class="phone-group" id="phoneGroup">
+                  <button type="button" class="phone-cc" id="phoneCcBtn" aria-haspopup="listbox" aria-expanded="false"
+                    aria-label="Seleccionar indicativo del país">
+                    <img id="phoneCcFlag" src="https://flagcdn.com/w40/co.png" alt="" width="22" height="16" />
+                    <span id="phoneCcCode">+57</span>
+                    <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                  </button>
+                  <input id="f-telefono" name="telefono" type="tel" inputmode="tel" required autocomplete="tel-national"
+                    aria-describedby="e-telefono" placeholder="300 748 7142" maxlength="32"
+                    data-testid="field-telefono" />
+                  <ul class="phone-list" id="phoneList" role="listbox" hidden></ul>
+                </div>
+                <span class="error" id="e-telefono">Ingrese un teléfono válido (7 a 15 dígitos, con prefijo + si es
+                  internacional).</span>
+              </div>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="f-email">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email"
+                  maxlength="254" data-testid="field-email" />
+                <span class="error" id="e-email">Ingrese un correo electrónico válido.</span>
+              </div>
+              <div class="field">
+                <label for="f-servicio">Servicio de interés <span class="req" aria-hidden="true">*</span></label>
+                <select id="f-servicio" name="servicio" required aria-describedby="e-servicio"
+                  data-testid="field-servicio">
+                  <option value="">Seleccione…</option>
+                  <option value="playas">Tours a Playas &amp; Parque Tayrona</option>
+                  <option value="alojamiento">Hospedaje, Cabañas &amp; Hoteles</option>
+                  <option value="transporte">Transporte privado &amp; Lanchas</option>
+                  <option value="gastronomia">Experiencias gastronómicas</option>
+                  <option value="paquete_completo">Paquete completo (Alojamiento + Playas)</option>
+                  <option value="otro">Otro plan o solicitud especial</option>
+                </select>
+                <span class="error" id="e-servicio">Elija un servicio.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-mensaje">Detalles de su viaje <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-mensaje" name="mensaje" required aria-describedby="e-mensaje"
+                placeholder="Fechas estimadas, número de personas, playas de interés, preferencias de hospedaje, etc."
+                minlength="10" maxlength="2000" data-testid="field-mensaje"></textarea>
+              <span class="error" id="e-mensaje">Cuéntenos un poco sobre su viaje (entre 10 y 2000 caracteres).</span>
+            </div>
+
+            <!-- Honeypot: oculto al usuario pero no a bots. No tiene label visible. -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="f-website">No llenar</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Consentimiento Ley 1581 — texto literal de governance/legal/texto-consentimiento.md -->
+            <div class="field consent-field" id="consentField">
+              <input id="f-consent" name="consentimiento" type="checkbox" required aria-describedby="e-consent"
+                data-testid="consent-checkbox" />
+              <label for="f-consent">
+                He leído y acepto la <a href="politica-privacidad.html" rel="noopener noreferrer">Política de
+                  Tratamiento de Datos Personales</a> de Puerta Samaria. Autorizo que mis datos sean usados únicamente
+                para responder y hacer seguimiento a esta cotización, conforme a la Ley 1581 de 2012.
+              </label>
+              <span class="error" id="e-consent">Para enviar la cotización, debe aceptar la Política de Tratamiento de
+                Datos.</span>
+            </div>
+
+            <div class="form-feedback" id="formFeedback" role="status" aria-live="polite" data-testid="form-feedback">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn" disabled aria-disabled="true"
+              data-testid="submit-quote">
+              Solicitar información y cotización
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+            </button>
+
+            <small>
+              Tratamos sus datos conforme a la Ley 1581 de 2012. Finalidad única: coordinar su solicitud turística.
+              Retención: 24 meses. Más detalle en nuestra <a href="politica-privacidad.html"
+                rel="noopener noreferrer">Política de Tratamiento de Datos</a>.
+            </small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong
+          style="color: var(--text); font-family: var(--font-display); letter-spacing: 0.05em; text-transform: uppercase;">Puerta
+          Samaria</strong><br />
+        Carrera 1C # 22-18, Centro Histórico · Santa Marta, Magdalena, Colombia
+      </div>
+      <div class="legal">
+        © <span id="year">2026</span> Puerta Samaria · <a href="politica-privacidad.html"
+          rel="noopener noreferrer">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal personalizado de consentimiento de cookies y mapa -->
+  <div id="consentModal" class="consent-modal" role="dialog" aria-modal="true" aria-labelledby="consentTitle"
+    aria-describedby="consentDesc" data-open="false" data-testid="maps-consent-modal">
+    <div class="consent-dialog">
+      <div class="consent-header">
+        <div class="consent-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+          <span class="consent-badge-text">Privacidad &amp; Cookies</span>
+        </div>
+        <button type="button" class="consent-close" id="consentCloseBtn" aria-label="Cerrar modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <h4 id="consentTitle">Carga del mapa interactivo</h4>
+
+      <p id="consentDesc">
+        Para visualizar la ubicación de nuestra oficina en Santa Marta mediante el mapa interactivo, nos conectamos con
+        <strong>Google Maps</strong>. Al aceptar, Google puede recopilar datos técnicos como su dirección IP e instalar
+        cookies en su navegador conforme a sus políticas de servicio.
+      </p>
+
+      <div class="consent-remember">
+        <label class="consent-checkbox-label">
+          <input type="checkbox" id="consentRemember" checked />
+          <span>Recordar mi elección en este dispositivo</span>
+        </label>
+      </div>
+
+      <div class="consent-actions">
+        <button type="button" class="btn btn-primary" id="consentAcceptBtn">
+          <span>Aceptar cookies y ver mapa</span>
+        </button>
+        <button type="button" class="btn btn-ghost" id="consentDeclineBtn">
+          Abrir en Google Maps externo
+        </button>
+      </div>
+
+      <p class="consent-policy-link">
+        Puede consultar los detalles en nuestra <a href="politica-privacidad.html" target="_blank"
+          rel="noopener noreferrer">Política de Privacidad</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============ GUÍA VIRTUAL INTERACTIVO (CARLOS) ============ -->
+  <aside class="virtual-guide" id="virtualGuide" aria-label="Asistente y Guía local de turismo">
+    <!-- Globo de texto de saludo -->
+    <div class="guide-speech-bubble" id="guideSpeechBubble" role="button" tabindex="0"
+      aria-label="Abrir chat con Carlos">
+      <span class="guide-bubble-text">¿Hola, en que puedo ayudarte?</span>
+      <button type="button" class="guide-bubble-close" id="guideBubbleClose" aria-label="Cerrar saludo">&times;</button>
+    </div>
+
+    <!-- Guía Carlos (fijo con el scroll en la esquina inferior derecha) -->
+    <button type="button" class="guide-avatar-btn" id="guideAvatarBtn"
+      aria-label="Hablar con Carlos, asesor de turismo en Santa Marta" aria-haspopup="dialog" aria-expanded="false">
+      <img src="assets/guia_sin_fondo.png" alt="Carlos, guía local y asesor de turismo de Puerta Samaria"
+        class="guide-avatar-img" width="160" height="198" />
+      <span class="guide-badge">
+        <span class="guide-badge-dot" aria-hidden="true"></span>
+        <span>Carlos · En línea</span>
+      </span>
+    </button>
+
+    <!-- Panel de conversación interactivo con Carlos -->
+    <div class="guide-chat-panel" id="guideChatPanel" role="dialog" aria-modal="true" aria-labelledby="guideChatName"
+      aria-hidden="true">
+      <div class="guide-chat-header">
+        <div class="guide-chat-profile">
+          <img src="assets/guia_sin_fondo.png" alt="" class="guide-chat-avatar" aria-hidden="true" />
+          <div>
+            <div class="guide-chat-name" id="guideChatName">Carlos · Asesor Local</div>
+            <div class="guide-chat-role">Guía de Turismo · Puerta Samaria</div>
+          </div>
+        </div>
+        <button type="button" class="guide-close-btn" id="guideCloseChatBtn"
+          aria-label="Cerrar ventana de conversación">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="guide-chat-body" id="guideChatMessages" role="log" aria-live="polite">
+        <div class="guide-msg guide-msg-guide">
+          <p>¡Hola! Soy <strong>Carlos</strong>, tu asesor y guía local en Santa Marta 🌴🌊.</p>
+          <p>¿En qué puedo ayudarte hoy?</p>
+          <div class="guide-quick-replies">
+            <button type="button" class="guide-quick-btn" data-question="¿Qué playas y tours me recomiendas?">🏖️ Playas
+              y tours</button>
+            <button type="button" class="guide-quick-btn" data-question="¿Cuáles son los precios y cómo cotizar?">💰
+              Precios y tarifas</button>
+            <button type="button" class="guide-quick-btn"
+              data-question="¿Qué servicios de hospedaje y lanchas tienen?">🏨 Hospedaje y lanchas</button>
+            <button type="button" class="guide-quick-btn" data-question="¿Dónde están ubicados en Santa Marta?">📍
+              Ubicación de la oficina</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-chat-footer">
+        <form class="guide-chat-form" id="guideChatForm">
+          <input type="text" class="guide-chat-input" id="guideChatInput" placeholder="Escribe tu pregunta a Carlos..."
+            autocomplete="off" />
+          <button type="submit" class="guide-send-btn" aria-label="Enviar pregunta">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+</body>
+
+</html>

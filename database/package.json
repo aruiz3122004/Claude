@@ -1,0 +1,33 @@
+{
+  "name": "@metalurgica/database",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Capa de persistencia de cotizaciones (Google Sheets por defecto, Excel alterno)",
+  "main": "./src/repositories/index.ts",
+  "exports": {
+    ".": "./src/repositories/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "seed:headers": "tsx scripts/seed-headers.ts",
+    "anonymize": "tsx scripts/anonymize.ts"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "google-auth-library": "^9.14.0",
+    "googleapis": "^144.0.0",
+    "proper-lockfile": "^4.1.2",
+    "ulid": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/proper-lockfile": "^4.1.4",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

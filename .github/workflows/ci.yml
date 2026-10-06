@@ -1,0 +1,208 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  lint-and-typecheck:
+    name: Lint, Typecheck, Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+      matrix:
+        workspace: [backend, database]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Check workspace exists
+        id: check
+        run: |
+          if [ -f "${{ matrix.workspace }}/package.json" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "::notice::Workspace ${{ matrix.workspace }} aun no inicializado, saltando."
+          fi
+
+      - name: Install dependencies
+        if: steps.check.outputs.exists == 'true'
+        working-directory: ${{ matrix.workspace }}
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Lint
+        if: steps.check.outputs.exists == 'true'
+        working-directory: ${{ matrix.workspace }}
+        run: npm run lint --if-present
+
+      - name: Typecheck
+        if: steps.check.outputs.exists == 'true'
+        working-directory: ${{ matrix.workspace }}
+        run: npm run typecheck --if-present
+
+      - name: Tests
+        if: steps.check.outputs.exists == 'true'
+        working-directory: ${{ matrix.workspace }}
+        run: npm test --if-present
+        env:
+          CI: "true"
+
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+
+    strategy:
+      fail-fast: false
+      matrix:
+        workspace: [backend, database]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Audit ${{ matrix.workspace }}
+        working-directory: ${{ matrix.workspace }}
+        if: hashFiles(format('{0}/package.json', matrix.workspace)) != ''
+        run: npm audit --omit=dev --audit-level=high
+
+  frontend-check:
+    name: Frontend static validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate HTML presence
+        run: |
+          test -f frontend/index.html || (echo "frontend/index.html missing" && exit 1)
+          test -f frontend/public/robots.txt || (echo "robots.txt missing" && exit 1)
+          test -f frontend/public/sitemap.xml || (echo "sitemap.xml missing" && exit 1)
+          test -f frontend/public/site.webmanifest || (echo "site.webmanifest missing" && exit 1)
+
+      - name: Validate webmanifest is valid JSON
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('frontend/public/site.webmanifest','utf8'))"
+
+  e2e:
+    name: E2E Playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Solo corre en push a main o PRs con label `run-e2e` (ahorra minutos de GH Actions)
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' &&
+       contains(github.event.pull_request.labels.*.name, 'run-e2e'))
+    needs: [lint-and-typecheck]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    env:
+      # TEST_MODE=1 activa el driver in-memory en backend (no toca Sheets/Resend reales).
+      # Contrato con backend: BE lee TEST_MODE y usa stubs locales en lugar de clientes HTTP.
+      TEST_MODE: "1"
+      NODE_ENV: "test"
+      LOG_LEVEL: "warn"
+      CORS_ORIGIN: "http://localhost:3000"
+      CONSENT_VERSION: "2026-10-02"
+      # Secretos irrelevantes en TEST_MODE pero el loader exige su presencia.
+      IP_HASH_SALT: "test-ip-salt-not-secret"
+      UA_HASH_SALT: "test-ua-salt-not-secret"
+      OWNER_EMAIL: "owner@test.local"
+      FROM_EMAIL: "no-reply@test.local"
+      MAIL_PROVIDER: "resend"
+      RESEND_API_KEY: "re_test_stub"
+      DB_DRIVER: "sheets"
+      SHEET_ID: "test-sheet-id"
+      SHEET_TAB: "quotes"
+      GOOGLE_SA_JSON: "{}"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install backend deps
+        if: hashFiles('backend/package.json') != ''
+        working-directory: backend
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Install e2e deps
+        if: hashFiles('e2e/package.json') != ''
+        working-directory: e2e
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Install Playwright browsers
+        if: hashFiles('e2e/package.json') != ''
+        working-directory: e2e
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Start backend in TEST_MODE (background)
+        if: hashFiles('backend/package.json') != ''
+        working-directory: backend
+        run: |
+          npm run start:test --if-present &
+          echo "BACKEND_PID=$!" >> $GITHUB_ENV
+          # Espera a que /api/healthz responda 200 (max 30 s)
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:3000/api/healthz > /dev/null; then
+              echo "Backend listo"
+              break
+            fi
+            sleep 1
+          done
+
+      - name: Run Playwright tests
+        if: hashFiles('e2e/package.json') != ''
+        working-directory: e2e
+        run: npx playwright test --project=${{ matrix.browser }}
+
+      - name: Upload Playwright artifacts on failure
+        if: failure() && hashFiles('e2e/package.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ matrix.browser }}-${{ github.run_id }}
+          path: |
+            e2e/test-results/
+            e2e/playwright-report/
+          retention-days: 7
+
+      - name: Stop backend
+        if: always() && env.BACKEND_PID != ''
+        run: kill $BACKEND_PID || true
