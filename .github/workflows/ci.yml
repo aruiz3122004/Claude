@@ -195,7 +195,7 @@ jobs:
 
       - name: Upload Playwright artifacts on failure
         if: failure() && hashFiles('e2e/package.json') != ''
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-${{ matrix.browser }}-${{ github.run_id }}
           path: |
