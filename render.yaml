@@ -1,0 +1,30 @@
+﻿# Blueprint de Render — https://render.com/docs/blueprint-spec
+# Un único servicio web: server.js sirve el frontend estático y la API (/api/*)
+# en el mismo origen. No requiere variables de entorno ni secretos.
+services:
+  - type: web
+    name: puerta-samaria-api
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      # Persistencia de las reservas (SQLite).
+      # En el plan gratuito el sistema de archivos es efímero: las reservas se
+      # pierden en cada deploy/reinicio. En un plan de pago, añade un disco
+      # persistente y apunta DATA_DIR a su punto de montaje:
+      #
+      # disk:
+      #   name: datos
+      #   mountPath: /var/data
+      #   sizeGB: 1
+      #
+      # - key: DATA_DIR
+      #   value: /var/data

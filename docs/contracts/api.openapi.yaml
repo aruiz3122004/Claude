@@ -1,0 +1,140 @@
+openapi: 3.1.0
+info:
+  title: Metalúrgica del Caribe — API
+  version: "2.1.0"
+  description: >
+    API ligera para captura de cotizaciones. Dueño del contrato: backend
+    (a partir de v2). v2.1 alinea rutas de salud con el enrutado real de
+    Vercel Functions y refleja el schema de respuesta de `/readyz`.
+servers:
+  - url: https://api.metalurgicadelcaribe.co
+    description: producción
+  - url: http://localhost:3000
+    description: desarrollo (vercel dev)
+
+paths:
+  /api/quotes:
+    post:
+      summary: Crear una cotización
+      operationId: createQuote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteInput"
+      responses:
+        "202":
+          description: Aceptada
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteAccepted"
+        "400":
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Rate limit excedido
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "503":
+          description: Persistencia no disponible
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/healthz:
+    get:
+      summary: Liveness
+      operationId: healthz
+      description: Chequeo mínimo. No depende de servicios externos.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthzResponse"
+
+  /api/readyz:
+    get:
+      summary: Readiness (chequea Sheets y correo)
+      operationId: readyz
+      description: >
+        Verifica dependencias externas (Google Sheets y proveedor de correo).
+        Devuelve `200` con `status=ok` cuando todo responde, y `200` con
+        `status=degraded` cuando al menos un dependiente falla pero el servicio
+        aún puede operar en modo degradado.
+      responses:
+        "200":
+          description: Resultado del chequeo
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadyzResponse"
+
+components:
+  schemas:
+    QuoteInput:
+      type: object
+      additionalProperties: false
+      required: [nombre, telefono, email, servicio, mensaje, consentimiento, consentimiento_version]
+      properties:
+        nombre: { type: string, minLength: 2, maxLength: 120 }
+        telefono: { type: string, minLength: 7, maxLength: 15 }
+        email: { type: string, format: email }
+        servicio:
+          type: string
+          enum: [residencial, comercial, industrial, portones, barandas, mobiliario, otro]
+        mensaje: { type: string, minLength: 10, maxLength: 2000 }
+        origen: { type: string, default: "web-landing" }
+        consentimiento: { type: boolean, enum: [true] }
+        consentimiento_version: { type: string }
+        website:
+          type: string
+          description: honeypot — debe ir vacío
+          maxLength: 0
+    QuoteAccepted:
+      type: object
+      required: [id, estado]
+      properties:
+        id: { type: string, description: ULID }
+        estado: { type: string, enum: [recibido] }
+    HealthzResponse:
+      type: object
+      required: [status]
+      properties:
+        status: { type: string, enum: [ok] }
+    ReadyzResponse:
+      type: object
+      required: [status, checks]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded]
+        checks:
+          type: object
+          required: [sheets, mail]
+          properties:
+            sheets: { type: boolean }
+            mail: { type: boolean }
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }
+        detalles:
+          type: array
+          items: { type: string }
+
+# Historial
+# v2.1.0 (2026-10-02) — AU-C-02, AU-M-04: rutas /healthz y /readyz pasan a
+#   /api/healthz y /api/readyz (enrutado Vercel sin rewrites); response de
+#   /api/readyz pasa a {status, checks:{sheets,mail}}; `nombre` sube a 120.
+# v2.0.0 (2026-10-02) — Versión inicial del contrato tras refactor serverless.

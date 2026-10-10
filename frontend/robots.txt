@@ -1,0 +1,8 @@
+# https://puertasamaria.com/robots.txt
+User-agent: *
+Allow: /
+
+# Rutas sin valor para indexación
+Disallow: /api/
+
+Sitemap: https://puertasamaria.com/sitemap.xml
