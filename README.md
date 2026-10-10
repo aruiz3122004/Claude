@@ -1,7 +1,7 @@
 # Puerta Samaria
 
 Sitio web de una agencia de turismo en Santa Marta. Es una página estática más una
-pequeña API que recibe las reservas del formulario y las guarda en SQLite.
+pequeña API que recibe las reservas del formulario y las guarda en Turso (Base de datos en la nube basada en sqlite).
 
 Todo corre en **un único servicio de Node** (`server.js`): sirve el frontend y responde
 `/api/*` en el mismo origen. Sin frameworks, sin build y sin dependencias.
@@ -154,3 +154,8 @@ No se necesitan variables de entorno ni secretos.
 - La arquitectura anterior (Vercel Functions + Google Sheets + Fastify en `backend/`
   y `database/`) se eliminó por completo; ya no hay dependencias ni configuración de Vercel.
 - `docs/`, `audit/` y `governance/` se conservan como documentación histórica y legal.
+
+
+## Actualización
+
+- Configuré la base de datos, pasando de SQLite, que solo traía datos locales a una db en la nube, llamada Turso, que permite conectarse y obtener datos desde cualquier lugar, y es gratuita, está basada en SQLite...
